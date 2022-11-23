@@ -1,6 +1,8 @@
 package models;
 
-public class Student implements Element,Visitee{
+import services.PrintVisitor;
+
+public class Student implements Element{
     String nume;
     String email;
 
@@ -28,16 +30,17 @@ public class Student implements Element,Visitee{
     }
 
     @Override
-    public <T> T accept(Visitor<T> v) {
-        return v.visitStudent(this);
+    public Element add(Element element) {
+        return this;
     }
 
     @Override
-    public void add(Element element) {
+    public void accept(PrintVisitor printVisitor) {
+
     }
 
     @Override
     public String toString() {
-        return "    " + this.nume + "," + this.email;
+        return "            " + this.nume + "," + this.email;
     }
 }

@@ -1,5 +1,7 @@
 package models;
 
+import services.PrintVisitor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +15,16 @@ public class Grupa implements Element {
     }
 
     @Override
-    public void add(Element element) {
+    public Element add(Element element) {
         if (this.subgrupe.size() < 2)
             this.subgrupe.add(element);
         else
             System.out.println("Nr maxim de subgrupe atins!");
+        return this;
+    }
+
+    @Override
+    public void accept(PrintVisitor printVisitor) {
     }
 
     public String getTitle() {
@@ -33,13 +40,8 @@ public class Grupa implements Element {
     }
 
     @Override
-    public <T> T accept(Visitor<T> v) {
-        return v.visitGrupa(this);
-    }
-
-    @Override
     public String toString() {
         return "    " + this.title;
     }
 }
-}
+

@@ -1,8 +1,8 @@
 package models;
 
-public interface Visitor<T>{
-    public T visitAn(An x);
-    public T visitGrupa(Grupa x);
-    public T visitSemigrupa(Semigrupa x);
-    public T visitStudent(Student x);
+public interface Visitor{
+    public void visitAn(An x);
+    public void visitGrupa(Grupa x);
+    public void visitSemigrupa(Semigrupa x);
+    public void visitStudent(Student x);
 }

@@ -1,5 +1,7 @@
 package models;
 
+import services.PrintVisitor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +16,15 @@ public class An implements Element {
     }
 
     @Override
-    public void add(Element element) {
+    public Element add(Element element) {
         this.grupe.add(element);
+        return this;
     }
 
+    @Override
+    public void accept(PrintVisitor printVisitor) {
+        printVisitor.visitAn(this);
+    }
 
     public String getTitle() {
         return title;
@@ -31,10 +38,6 @@ public class An implements Element {
         return grupe;
     }
 
-    @Override
-    public <T> T accept(Visitor<T> v) {
-        return v.visitAn(this);
-    }
 
     @Override
     public String toString() {

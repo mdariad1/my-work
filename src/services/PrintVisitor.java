@@ -6,29 +6,34 @@ import java.util.List;
 
 public class PrintVisitor implements Visitor{
 
-    List<Element> contents;
-
     Element content;
     @Override
     public void visitAn(An x) {
-        this.contents = x.getGrupe();
+        System.out.println(x);
+        for (Element grupa:x.getGrupe()){
+            this.visitGrupa((Grupa) grupa);
+        }
     }
 
     @Override
     public void visitGrupa(Grupa x) {
-        this.contents = x.getSubgrupe();
+        System.out.println(x);
+        for (Element semigrupa:x.getSubgrupe()){
+            this.visitSemigrupa((Semigrupa) semigrupa);
+        }
     }
 
     @Override
     public void visitSemigrupa(Semigrupa x) {
-        this.contents = x.getStudenti();
+        System.out.println(x);
+        for (Element student:x.getStudenti()){
+            this.visitStudent((Student) student);
+        }
     }
 
     @Override
     public void visitStudent(Student x) {
-        this.content = x;
+        System.out.println(x);
     }
-
-
 
 }

@@ -1,6 +1,9 @@
 package models;
 
+import services.PrintVisitor;
+
 public interface Element {
-    public void add(Element element);
-    
+    Element add(Element element);
+
+    void accept(PrintVisitor printVisitor);
 }

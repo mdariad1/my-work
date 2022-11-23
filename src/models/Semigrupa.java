@@ -5,7 +5,7 @@ import services.PrintVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Semigrupa implements Element, Visitee, {
+public class Semigrupa implements Element{
 
     String title;
     List<Element> studenti;
@@ -16,17 +16,17 @@ public class Semigrupa implements Element, Visitee, {
     }
 
     @Override
-    public void add(Element element) {
+    public Element add(Element element) {
         if (this.studenti.size() < 15)
             this.studenti.add((Student) element);
         else
             System.out.println("Nr maxim de studenti atins!");
-
+        return this;
     }
 
     @Override
-    public <T> T accept(Visitor<T> v) {
-        return v.visitSemigrupa(this);
+    public void accept(PrintVisitor printVisitor) {
+
     }
 
     public List<Element> getStudenti() {
@@ -35,6 +35,10 @@ public class Semigrupa implements Element, Visitee, {
 
     @Override
     public String toString() {
-        return "    " + this.title;
+        return "        " + this.title;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }
